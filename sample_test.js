@@ -10,6 +10,6 @@ describe('Sample Test', function() {
     });
 
     it('add two numbers error', function(){
-    	expect(sampleApp.add(2,8)).to.equal(20);
+    	expect(sampleApp.add(10,30)).to.equal(40);
     });
 });
