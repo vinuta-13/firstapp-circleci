@@ -1,10 +1,24 @@
 version: 2.1
 jobs:
-    build:
+    one:
       docker:
         - image: circleci/node:8.9.4 # the primary container, where your job's commands are run
       steps:
-        - checkout # check out the code in the project directory
-        - run: echo "hello world" # run the `echo` command
+        - checkout
         - run: npm install
         - run: npm test
+    two:
+      docker:
+        - image: circleci/node:8.9.4 # the primary container, where your job's commands are run
+      steps:
+        - run: echo "Executed once sample app is built and tested" # run the `echo` command
+
+workflows:
+  version: 2.1
+  build-and-test
+    jobs:
+      - one
+      - two
+          requires:
+            - one
+
