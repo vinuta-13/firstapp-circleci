@@ -14,11 +14,12 @@ jobs:
         - run: echo "Executed once sample app is built and tested" # run the `echo` command
 
 workflows:
-  version: 2.1
+  version: 2
   build-and-test:
     jobs:
       - one
-      - two
+      - two:
           requires:
             - one
+
 
