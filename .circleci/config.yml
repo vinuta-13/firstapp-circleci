@@ -20,6 +20,6 @@ workflows:
       - one
       - two:
           requires:
-            - two
+            - one
 
 
