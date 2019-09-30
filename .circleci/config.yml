@@ -4,7 +4,7 @@ resources:
     run:
       name: setup aws credentials test
       command: |
-        ./cicd/set_up_aws_credentials.sh
+        ./set_up_aws_credentials.sh
         echo "export AWS_PROFILE=grafo-naksha/test" | tee -a ~/.env
 jobs:
     one:
