@@ -1,4 +1,11 @@
 version: 2.1
+resources:
+  setup_aws_credentials_test: &setup_aws_credentials_test
+    run:
+      name: setup aws credentials test
+      command: |
+        ./cicd/set_up_aws_credentials.sh
+        echo "export AWS_PROFILE=grafo-naksha/test" | tee -a ~/.env
 jobs:
     one:
       docker:
@@ -7,6 +14,7 @@ jobs:
         - checkout
         - run: npm install
         - run: npm test
+        - *setup_aws_credentials_test
     two:
       docker:
         - image: circleci/node:8.9.4 # the primary container, where your job's commands are run
